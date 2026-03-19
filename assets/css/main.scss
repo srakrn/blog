@@ -1,0 +1,25 @@
+---
+# Only the main Sass file needs front matter (the dashes are enough)
+---
+/* Import custom font declarations */
+@import "custom/fonts";
+
+/* Import custom variables */
+@import "custom/variables";
+
+/* Import the minimal-mistakes theme */
+@import "minimal-mistakes";
+
+/* Import custom styles */
+@import "custom/custom";
+
+/* Custom styles to override theme defaults */
+.sidebar.sticky {
+    opacity: 1 !important;
+    /* Force opacity to 1 at all times, overriding any default or hover states */
+}
+
+.site-title,
+.p-name {
+    font-family: $header-font-family;
+}

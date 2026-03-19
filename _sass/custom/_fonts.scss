@@ -1,0 +1,73 @@
+/* 
+ * Custom Font Declarations
+ * 
+ * This file contains the @font-face declarations for:
+ * - Anantason Reno Web (for headings)
+ * - FC Mission Flat Base Web (for body text)
+ */
+
+// Anantason Reno Web (for headings)
+@font-face {
+    font-family: 'Anantason Reno Web';
+    src: url('../fonts/AnantasonReno-Condensed.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Anantason Reno Web';
+    src: url('../fonts/AnantasonReno-CondensedBold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Anantason Reno Web';
+    src: url('../fonts/AnantasonReno-CondensedItalic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Anantason Reno Web';
+    src: url('../fonts/AnantasonReno-CondensedBoldItalic.otf') format('opentype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+// FC Mission Flat Base Web (for body text)
+@font-face {
+    font-family: 'FC Mission Flat Base Web';
+    src: url('../fonts/FCMissionFlatBase-Regular.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FC Mission Flat Base Web';
+    src: url('../fonts/FCMissionFlatBase-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FC Mission Flat Base Web';
+    src: url('../fonts/FCMissionFlatBase-Italic.otf') format('opentype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'FC Mission Flat Base Web';
+    src: url('../fonts/FCMissionFlatBase-BoldItalic.otf') format('opentype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}

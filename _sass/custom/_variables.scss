@@ -1,0 +1,19 @@
+/* 
+ * Custom Variables
+ * 
+ * This file overrides the default variables from the minimal-mistakes theme
+ * to use our custom fonts.
+ */
+
+/* Override font variables */
+$serif: "FC Mission Flat Base Web", Georgia, Times, serif !default;
+$sans-serif: "FC Mission Flat Base Web", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
+$monospace: Monaco, Consolas, "Lucida Console", monospace !default;
+
+/* Override heading font variables */
+$header-font-family: "FC Mission Flat Base Web", -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif !default;
+
+/* Override global font variables */
+$global-font-family: $sans-serif !default;
+$header-font-family: $header-font-family !default;
+$caption-font-family: $serif !default;
