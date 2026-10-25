@@ -1,7 +1,3 @@
 main:
-- title: Home
-  url: /
-- title: Experiences
-  url: /experiences/
-- title: Blog
-  url: /blog/
+  - title: Blog
+    url: /
