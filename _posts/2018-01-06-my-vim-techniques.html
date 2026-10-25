@@ -1,0 +1,45 @@
+---
+layout: single
+title: My Vim techniques
+date: 2018-01-06 13:32:13 +0700
+last_modified_at: 2018-01-06 21:05:41 +0700
+permalink: /blog/my-vim-techniques/
+wordpress_id: 718
+wordpress_author: '@srakrn'
+author_profile: true
+categories:
+- Geek
+excerpt: 'ควรนั่งไล่ Vim tips เท่าที่ใช้เอง เผื่อคนอื่นจะได้ลองใช้ตามดูบ้าง Vim-a-must ลง plugin manager แล้วชีวิตจะดี เราอยู่ได้ด้วยปลั๊กอิน Vim หลายๆ ตัวดังนี้ vim-airline เป็น status bar สำหรับ Vim Syntastic เป็น syntax corrector, ถ้าลงพวก pylint '
+---
+{% raw %}
+<p>ควรนั่งไล่ Vim tips เท่าที่ใช้เอง เผื่อคนอื่นจะได้ลองใช้ตามดูบ้าง</p>
+<h1>Vim-a-must</h1>
+<ul>
+<li><strong>ลง plugin manager</strong> แล้วชีวิตจะดี เราอยู่ได้ด้วยปลั๊กอิน Vim หลายๆ ตัวดังนี้
+<ul>
+<li>vim-airline เป็น status bar สำหรับ Vim</li>
+<li>Syntastic เป็น syntax corrector, ถ้าลงพวก pylint ไว้ มันจะฟ้องเลยว่าโค้ด lint ไม่ผ่านตรงไหนบ้าง</li>
+<li>vim-json ช่วยอ่าน JSON ชีวิตดีขึ้นเยอะ</li>
+<li>NERDTree ทำให้มี directory listing อันนี้ผ่าน</li>
+<li>EasyMotion ตัวนี้เจ๋งสุด ใส่ modifier (เช่น <code>\\</code>) หน้า cursor movement key (hjklwbe) แล้วมันจะทำให้ "กระโดด" ไปตรงไหนของโค้ดก็ได้</li>
+</ul>
+</li>
+</ul>
+<h1>Essential tips</h1>
+<ul>
+<li>กดดอกจันเพื่อ jump ไปคำเดียวกันในตรงอื่นของ Vim</li>
+<li>เรา execute command จาก Vim ได้ด้วยคำสั่ง <code>!</code> เช่น <code>:!ls</code> แต่เราสามารถส่งไฟล์ใน buffer เข้าไปในคำสั่งที่เรา execute ด้วย <code>%!</code> กล่าวคือเช่น <code>:%!cut -d, -f2</code></li>
+<li>ประยุกต์ใช้ <code>:r</code> ซึ่งเอาไว้อ่านไฟล์เข้า buffer กับ <code>!</code> ก็ได้</li>
+<li>คำสั่ง <code>gf</code> เปิดไฟล์ตามพาธที่เคอร์เซอร์ทับอยู่ (underlying)</li>
+</ul>
+<h1>Advanced tips</h1>
+<ul>
+<li>วิธีการหาไฟล์ให้เร็ว:
+<pre>:r! find . -name [whatever] // โหลดไฟล์เข้ามา buffer
+Ctrl+w gf // เปิดไฟล์ในหน้าต่างใหม่</pre>
+</li>
+<li>Python มี <code>json.tool</code> ไว้ pretty print JSON ดังนั้นถ้าอยาก format JSON ใน Vim ก็
+<pre>:%! python -m json.tool</pre>
+</li>
+</ul>
+{% endraw %}

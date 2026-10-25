@@ -1,0 +1,104 @@
+---
+layout: single
+title: 'Fundamental HTML+CSS: Grid system'
+date: 2016-07-30 22:19:00 +0700
+last_modified_at: 2016-08-23 21:29:19 +0700
+permalink: /blog/fundamental-html-and-css-grid-system/
+wordpress_id: 167
+wordpress_author: '@srakrn'
+author_profile: true
+categories:
+- Computer
+- Education
+excerpt: บทความนี้อุทิศให้ไข่แห่ง CPE30 ผู้ขยันทำงาน :P การจัดหน้าเว็บไซต์ในปัจจุบันนั้น นอกจากจะต้องคำนึงถึงความสวยงามตามนิยามของแต่ละคนแล้ว ยังต้องพิจารณาปัจจัยหลายๆ อย่างประกอบ หนึ่งในปัจจัยที่มีผลในปัจจุบันคือขนาดของหน้าจอ ปฏิเสธไม่ได้ว่าขนาดหน้
+---
+{% raw %}
+<blockquote><p>บทความนี้อุทิศให้ไข่แห่ง CPE30 ผู้ขยันทำงาน :P</p></blockquote>
+<p>การจัดหน้าเว็บไซต์ในปัจจุบันนั้น นอกจากจะต้องคำนึงถึงความสวยงามตามนิยามของแต่ละคนแล้ว ยังต้องพิจารณาปัจจัยหลายๆ อย่างประกอบ</p>
+<p>หนึ่งในปัจจัยที่มีผลในปัจจุบันคือขนาดของหน้าจอ ปฏิเสธไม่ได้ว่าขนาดหน้าจอที่ต่างกันนั้นทำให้เกิดความ "หลากหลาย" ของเว็บไซต์</p>
+<p>หากทดลองเข้าบล็อกนี้จากโทรศัพท์ จะพบว่าส่วนแถบด้านข้างหายไปอยู่ด้านบน เทคนิกการจัดหน้าแบบนี้เรียกว่า "responsive" ซึ่งโดยเบื้องต้นจะกล่าวถึงการจัดหน้าโดยใช้ระบบ Grid อย่างง่าย</p>
+<h1>กริดคืออะไร</h1>
+<p>ในการออกแบบเว็บหลายๆ ครั้ง เราอาจแบ่งเป็น "แถบ" หลายๆ แถบ การออกแบบเว็บที่มีแถบด้านข้าง ก็อาจมองได้ว่าเราแบ่งเว็บในส่วนนอกเหนือจากหัวเป็น "แถบ"</p>
+<p>เป็นเรื่องง่ายดายที่ในปัจจุบัน เราสามารถใช้ระบบ "แถบ" ที่คน "ทำ" ไว้ให้ล่วงหน้าแล้ว เราเรียกระบบนี้ว่า "ระบบกริด"</p>
+<p><a href="/blog/wp-content/uploads/2016/07/Screen-Shot-2559-07-30-at-9.50.46-PM.png"><img class="aligncenter size-full wp-image-168" src="/blog/wp-content/uploads/2016/07/Screen-Shot-2559-07-30-at-9.50.46-PM.png" alt="Screen Shot 2559-07-30 at 9.50.46 PM" width="912" height="563" /></a></p>
+<p>กริดที่จะใช้ในบทความนี้ จะใช้ชุดกริดจาก flexbox grid ซึ่งสามารถแบ่ง "แถบ" ย่อยได้เป็น 12 แถบ</p>
+<p>ข้อดีของระบบกริดสมัยใหม่ คือสามารถสั่งให้ความกว้างของแต่ละ "โซน" ต่างกันในแต่ละขนาดหน้าจอได้ เราอาจใช้ความสามารถนี้ในการ "ย้าย" เมนูแถบสีเหลืองไปไว้ต่อบน-ล่างกับเนื้อหาส่วนสีน้ำเงิน</p>
+<p><a href="/blog/wp-content/uploads/2016/07/Screen-Shot-2559-07-30-at-9.53.33-PM.png"><img class="aligncenter size-full wp-image-169" src="/blog/wp-content/uploads/2016/07/Screen-Shot-2559-07-30-at-9.53.33-PM.png" alt="Screen Shot 2559-07-30 at 9.53.33 PM" width="1015" height="637" /></a></p>
+<p>เพื่อไม่ให้เป็นการเสียเวลา จะอธิบายวิธีการใช้ระบบกริดได้ดังนี้</p>
+<h1>การใช้งานกริด</h1>
+<h2>เริ่มต้นใช้งานกริด</h2>
+<p>ขั้นแริ่มแรกของการใช้กริด คือการเพิ่มไฟล์ CSS ของกริดไว้ในส่วน HTML Header ทำได้ด้วยการโหลดไฟล์กริดมาไว้ในที่ที่ตายตัวหนึ่งที่ แล้วใช้คำสั่ง &lt;link&gt; เพื่อสร้าง stylesheet</p>
+<pre class="lang:default decode:true " title="Importing Flexbox Grid">&lt;link href="path/to/flexboxgrid.css" rel="stylesheet" type="text/css"&gt;</pre>
+<p>หากผู้อ่านเป็นนิสิต CPE30 ที่ต้องการสร้างไฟล์เพื่อส่งอาจารย์ อาจทำได้ด้วยการ hotlink (ไม่ต้องอัพไฟล์) ด้วยการแปะโค้ดตามนี้ในส่วน header</p>
+<pre class="lang:default decode:true">&lt;link href="https://srakrn.me/css/flexboxgrid.css" rel="stylesheet" type="text/css"&gt;</pre>
+<h2>ออกแบบหน้าเพจ</h2>
+<p>เราจำเป็นต้อง "คิด" ก่อนว่าจะ "แบ่ง" เว็บของเราเป็นกี่ส่วน<strong>ตามแนวนอน</strong> ซึ่งสมมติว่าหน้าเว็บเป็นทรงมาตรฐานดังรูปข้างบน</p>
+<p>เราอาจแบ่งเว็บทรงนี้เป็น 2 แถวตามแนวนอน คือส่วนหัวหนึ่งแถว กับส่วนเนื้อหาและส่วนเมนูด้านข้าง ตามกรอบสีแดงข้างบน</p>
+<p><a href="/blog/wp-content/uploads/2016/07/Screen-Shot-2559-07-30-at-9.55.41-PM.png"><img class="aligncenter size-full wp-image-170" src="/blog/wp-content/uploads/2016/07/Screen-Shot-2559-07-30-at-9.55.41-PM.png" alt="Screen Shot 2559-07-30 at 9.55.41 PM" width="1011" height="579" /></a></p>
+<p>ในการสร้างแถวตามแนวนอนใหม่ สามารถสร้างได้ด้วยคำสั่ง <span class="lang:default decode:true crayon-inline ">&lt;div class="row"&gt;</span></p>
+<p>ในที่นี้อาจประกาศ row สองแถวได้ดังนี้</p>
+<pre class="lang:default decode:true">&lt;div class="row"&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+&lt;/div&gt;</pre>
+<p>การประกาศแถว เราจะประกาศด้วย &lt;div&gt; โดยประกาศ class ดังภาพ</p>
+<p><a href="/blog/wp-content/uploads/2016/07/Screen-Shot-2559-07-30-at-10.11.18-PM.png"><img class="aligncenter size-full wp-image-171" src="/blog/wp-content/uploads/2016/07/Screen-Shot-2559-07-30-at-10.11.18-PM.png" alt="Screen Shot 2559-07-30 at 10.11.18 PM" width="900" height="480" /></a></p>
+<p>โดยที่</p>
+<ul>
+<li>col-xs- คือกินพื้นที่กี่ "แถบ" บนจอขนาดเล็กมาก เช่นโทรศัพท์เก่าๆ</li>
+<li>col-sm-คือกินพื้นที่กี่ "แถบ" บนจอขนาดเล็ก เช่นโทรศัพท์ใหม่ๆ</li>
+<li>col-md- คือกินพื้นที่กี่ "แถบ" บนจอขนาดเล็ก เช่นไอแพดแนวตั้ง</li>
+<li>col-lg- คือกินพื้นที่กี่ "แถบ" บนจอขนาดใหญ่ เช่นคอมพิวเตอร์</li>
+</ul>
+<p>ทั้งหมดตามด้วยตัวเลขว่ากินพื้นที่กี่แถบ มากสุดคือ 12</p>
+<p>ในส่วนของหัวแถวแรก เราสามารถประกาศ "แถบ" ที่กว้าง 12 หน่วยอย่างเสมอต้นเสมอปลายได้เลย</p>
+<pre class="lang:default decode:true">&lt;div class="row"&gt;
+    &lt;div class="col-xs-12
+                col-sm-12
+                col-md-12
+                col-lg-12"&gt;
+        &lt;h1&gt;ส่วนหัว&lt;/h1&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+&lt;/div&gt;</pre>
+<p>ในส่วนของหัวแถวแรก เราสามารถประกาศ "แถบ" ที่กว้าง 12 หน่วยอย่างเสมอต้นเสมอปลายได้เลย</p>
+<pre class="lang:default decode:true">&lt;div class="row"&gt;
+    &lt;div class="col-xs-12
+                col-sm-12
+                col-md-12
+                col-lg-12"&gt;
+        &lt;h1&gt;ส่วนหัว&lt;/h1&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+&lt;/div&gt;</pre>
+<p>และในส่วนเนื้อหา เราอาจประกาศได้ดังนี้</p>
+<p><strong>เมนู:</strong> เล็กมากๆ ให้กว้างทั้งจอ ถ้าใหญ่ให้กว้าง 3 ส่วน<br />
+<strong>เนื้อหา:</strong> เล็กมากๆ ให้กว้างทั้งจอ ถ้าใหญ่ให้กว้าง 9 ส่วน</p>
+<p>อาจเขียนเป็น HTML ได้ดังนี้</p>
+<pre class="lang:default decode:true">&lt;div class="row"&gt;
+    &lt;div class="col-xs-12
+                col-sm-12
+                col-md-12
+                col-lg-12"&gt;
+        &lt;h1&gt;ส่วนหัว&lt;/h1&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="row"&gt;
+    &lt;div class="col-xs-12
+                col-sm-12
+                col-md-3
+                col-lg-3"&gt;
+        &lt;h2&gt;เมนูด้านซ้าย&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class="col-xs-12
+                col-sm-12
+                col-md-9
+                col-lg-9"&gt;
+        &lt;p&gt;เนื้อหา&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</pre>
+<p>เป็นการใส่โครงให้กับ HTML เพื่อกำหนดความกว้างโดยคร่าว</p>
+{% endraw %}

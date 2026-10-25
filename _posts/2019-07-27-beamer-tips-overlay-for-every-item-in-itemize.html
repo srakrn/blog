@@ -1,0 +1,57 @@
+---
+layout: single
+title: 'Beamer tips: overlay for every item in `itemize`'
+date: 2019-07-27 11:58:35 +0700
+last_modified_at: 2019-07-27 11:58:35 +0700
+permalink: /blog/beamer-tips-overlay-for-every-item-in-itemize/
+wordpress_id: 951
+wordpress_author: '@srakrn'
+author_profile: true
+categories:
+- Note
+- Geek
+tags:
+- latex
+- beamer
+excerpt: 'Most of the time when I''m dealing with my slides, it''s very common to do this: \begin{itemize} \item<1-> This is an item \item<2-> This is another item \end{itemize} This, however, is very time consuming, and I just recently found a tip: ju'
+---
+{% raw %}
+<p>Most of the time when I'm dealing with my slides, it's very common to do this:</p>
+
+
+
+<pre class="wp-block-code"><code>\begin{itemize}
+    \item&lt;1-> This is an item
+    \item&lt;2-> This is another item
+\end{itemize}</code></pre>
+
+
+
+<p>This, however, is very time consuming, and I just recently found a tip: just pass the overlay specification into the itemize environment itself!</p>
+
+
+
+<pre class="wp-block-code"><code>\begin{itemize}[&lt;+->]
+    \item This is an item
+    \item This is another item
+\end{itemize}</code></pre>
+
+
+
+<p>Observe the &lt;+->, which tells the overlay to increment the pause count onwards.</p>
+
+
+
+<p>However, I still do have some personal problem: I preferred the items not to be shown any in the very first slide (Beamer's normal behaviour, to my understanding, is to show the first item on the first slide). In other words,  I wanted to pause since the very first item.</p>
+
+
+
+<p>This does the job neatly:</p>
+
+
+
+<pre class="wp-block-code"><code>\begin{itemize}[&lt;+(0)->]
+    \item This is an item
+    \item This is another item
+\end{itemize}</code></pre>
+{% endraw %}

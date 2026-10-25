@@ -1,0 +1,30 @@
+---
+layout: single
+title: วิธีตรวจหน่วยความจำเกินสำหรับโค้ดโปรแกรม
+date: 2017-10-04 16:18:30 +0700
+last_modified_at: 2018-03-05 09:57:22 +0700
+permalink: /blog/cafe-grader-memory/
+wordpress_id: 738
+wordpress_author: '@srakrn'
+author_profile: true
+categories:
+- Note
+excerpt: ตอนทำเกรดเดอร์ของ 111 (1DG) ได้รับคำแนะนำจากอาจารย์มะนาวว่าให้ใช้ sandbox กันหน่วยความจำเกินของ Mares สำหรับผู้เรียนที่เป็นคนตรวจสอบการเขียนโค้ดเอง ถ้าสามารถรันคำสั่งในลักษณะเดียวกันได้ก็จะสามารถเช็คหน่วยความจำเกินได้ไม่ยาก และมีประโยชน์กว่
+---
+{% raw %}
+<p>ตอนทำเกรดเดอร์ของ 111 (1DG) ได้รับคำแนะนำจากอาจารย์มะนาวว่าให้ใช้ sandbox กันหน่วยความจำเกินของ <a href="https://mj.ucw.cz/">Mares</a> สำหรับผู้เรียนที่เป็นคนตรวจสอบการเขียนโค้ดเอง ถ้าสามารถรันคำสั่งในลักษณะเดียวกันได้ก็จะสามารถเช็คหน่วยความจำเกินได้ไม่ยาก และมีประโยชน์กว่า X หรือ T โดดๆ จากเกรดเดอร์</p>
+<p>ขั้นแรก โหลดไฟล์ Sandbox มาจาก <a href="https://github.com/cafe-grader-team/cafe-grader-judge-scripts/blob/master/std-script/box64-new.c">https://github.com/cafe-grader-team/cafe-grader-judge-scripts/blob/master/std-script/box64-new.c</a> (กด Raw แล้ว Ctrl+S เซฟไว้สักที่) เสร็จแล้วคอมไพล์ด้วย GCC (ทั้งนี้สำหรับนิสิต 111 หมู่ 1 ในเซิร์ฟเวอร์กลางมีคำสั่งนี้ให้ใช้ได้ทันที ข้ามขั้นตอนนี้ไปได้เลย)</p>
+<pre><code>gcc box64-new.c -o box</code></pre>
+<p>หลังจากนั้นจะได้ไฟล์ชื่อ <code>box</code> แนะนำให้ย้ายไปไว้ใน $PATH สักโฟลเดอร์ (ท่าที่ง่ายที่สุดคือย้ายเข้าไปใน <code>/bin</code>)</p>
+<pre><code>sudo mv box /bin</code></pre>
+<p>รันคำสั่ง<code>box</code> หนึ่งที ควรจะได้ output ออกมาประมาณนี้</p>
+<p><a href="/blog/wp-content/uploads/2018/02/Screenshot-from-2018-02-04-16-13-49.png"><img class="aligncenter size-full wp-image-739" src="/blog/wp-content/uploads/2018/02/Screenshot-from-2018-02-04-16-13-49.png" alt="" width="1920" height="1080" /></a></p>
+<p>ถ้าได้แล้วแปลว่าทุกอย่างโอเค ให้เขียน input ที่ต้องการใส่ไว้เป็นไฟล์ไฟล์หนึ่ง แล้วรันคำสั่ง</p>
+<pre><code>box -a 2 -f -T -t [เวลาที่จะจำกัด] -m [เมมที่จะจำกัด (kB)] -i [ไฟล์ input] [ไฟล์โปรแกรมที่คอมไพล์แล้ว]</code></pre>
+<p>เช่น ถ้าจะรันให้ทัน 2 วินาที ในเมม 32MB (32768KB) โดยรับข้อมูลเข้าจากไฟล์ <code>input-4.txt</code> และโปรแกรมชื่อ <code>a.out</code> ให้รัน</p>
+<pre><code>box -a 2 -f -T -t 2 -m 32768 -i input-4.txt a.out</code></pre>
+<p>คำเตือนคือตรงชื่อไฟล์ที่จะรันต้องเป็นพาธที่ถูกต้อง สำหรับนิสิต 111 หมู่ 1 ถ้าจะรันไพธอนให้รันด้วย</p>
+<pre><code>box -a 2 -f -T -t 2 -m 32768 -i input-4.txt $(which python) program.py</code></pre>
+<p>ท่อน <code>$(which python)</code> จะทำการยัด full path ของ Python ในเครื่องมาให้</p>
+<p>ถ้ารันผ่านควรจะมี output ออกมายาวๆ ว่าโอเค แต่ถ้ารันไม่ทันควรจะขึ้นว่า <code>signal 6</code> หรือ <code>signal 11</code> อันใดอันหนึ่ง ส่วนถ้าเวลาเกินก็ขึ้นชัดเจนว่า <code>Time limit exceeded</code></p>
+{% endraw %}

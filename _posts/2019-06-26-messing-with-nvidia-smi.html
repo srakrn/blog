@@ -1,0 +1,21 @@
+---
+layout: single
+title: ตบตีกับ NVIDIA บน Ubuntu
+date: 2019-06-26 10:07:42 +0700
+last_modified_at: 2019-06-26 10:07:54 +0700
+permalink: /blog/messing-with-nvidia-smi/
+wordpress_id: 942
+wordpress_author: '@srakrn'
+author_profile: true
+categories:
+- Note
+- Computer
+excerpt: เขียนไว้นิดหน่อยเป็น notes ให้ตัวเอง ตอนนี้มี PPA Drivers แล้ว ลงให้เสี่ยงพังน้อยที่สุดคือเพิ่ม PPA ที่ https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa แล้วไปเลือก Additional Drivers เอา ถ้าเคยใช้ proprietary drivers เก่าๆ ให้ไป
+---
+{% raw %}
+<p>เขียนไว้นิดหน่อยเป็น notes ให้ตัวเอง</p>
+
+
+
+<ul><li>ตอนนี้มี PPA Drivers แล้ว ลงให้เสี่ยงพังน้อยที่สุดคือเพิ่ม PPA ที่ <a href="https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa">https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa</a> แล้วไปเลือก Additional Drivers เอา</li><li>ถ้าเคยใช้ proprietary drivers เก่าๆ ให้ไป purge แพคเกจ <code>nvidia-*</code> ทิ้งด้วย</li><li>ถ้าลงยังไง <code>nvidia-smi</code> ก็ทำท่าจะไม่เจอการ์ดจอ ลองปิด secure boot (เสียเวลาชีวิตไปสองวันเต็มๆ)</li></ul>
+{% endraw %}
